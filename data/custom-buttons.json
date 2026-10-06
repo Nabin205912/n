@@ -1,0 +1,42 @@
+[
+  {
+    "id": "order",
+    "label": "Order Now",
+    "url": "#order",
+    "style": "primary",
+    "icon": "🛒",
+    "enabled": true,
+    "target": "_self",
+    "order": 0
+  },
+  {
+    "id": "services",
+    "label": "Our Services",
+    "url": "#services",
+    "style": "light",
+    "icon": "✦",
+    "enabled": true,
+    "target": "_self",
+    "order": 1
+  },
+  {
+    "id": "gallery",
+    "label": "Gallery",
+    "url": "#gallery",
+    "style": "light",
+    "icon": "▣",
+    "enabled": true,
+    "target": "_self",
+    "order": 2
+  },
+  {
+    "id": "contact",
+    "label": "Contact",
+    "url": "#contact",
+    "style": "light",
+    "icon": "☎",
+    "enabled": true,
+    "target": "_self",
+    "order": 3
+  }
+]

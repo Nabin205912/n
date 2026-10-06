@@ -1,0 +1,1 @@
+This folder is reserved for seed/demo data. Production business records are written to the connected GitHub repository under storage/.
