@@ -85,4 +85,172 @@
  try{const a=JSON.parse(localStorage.getItem('sathi_custom_buttons_v2')||JSON.stringify(defaults)).filter(x=>x.enabled).sort((x,y)=>(x.order||0)-(y.order||0));document.getElementById('customNavButtons').innerHTML=a.map(b=>`<a class="custom-nav-btn ${b.style||'light'}" href="${esc(b.url||'#')}" target="${b.target||'_self'}">${esc(b.icon||'')} ${esc(b.label||'Button')}</a>`).join('');}catch(e){}
 })();
 </script><script src="config.js"></script><script src="script.js"></script>
+  
+<!-- Sathi Printing Press Welcome Popup -->
+<div id="welcomePopup" class="welcome-popup">
+  <div class="popup-overlay"></div>
+
+  <div class="popup-box">
+    <button id="closePopup" class="popup-close" aria-label="Close">
+      &times;
+    </button>
+
+    <img
+      src="storage/stock/pop.jpg"
+      alt="Sathi Printing Press Special Offer"
+      class="popup-image"
+    />
+
+    <div class="popup-timer">
+      <div id="popupTimerBar"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+.welcome-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: rgba(0, 12, 35, 0.78);
+  backdrop-filter: blur(7px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .45s ease, visibility .45s ease;
+}
+
+.welcome-popup.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup-box {
+  position: relative;
+  width: min(520px, 95vw);
+  max-height: 88vh;
+  overflow: hidden;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 25px 80px rgba(0,0,0,.4);
+  transform: translateY(40px) scale(.85);
+  transition: transform .5s cubic-bezier(.2,.8,.2,1);
+}
+
+.welcome-popup.show .popup-box {
+  transform: translateY(0) scale(1);
+}
+
+.popup-image {
+  display: block;
+  width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+}
+
+.popup-close {
+  position: absolute;
+  z-index: 2;
+  top: 10px;
+  right: 10px;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0,0,0,.75);
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+
+.popup-close:hover {
+  background: #e11d48;
+  transform: rotate(90deg);
+}
+
+.popup-timer {
+  height: 5px;
+  background: #e5e7eb;
+}
+
+#popupTimerBar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #06b6d4, #2563eb);
+  transform-origin: left;
+}
+
+@media (max-width: 480px) {
+  .popup-box {
+    width: 96vw;
+    border-radius: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-popup,
+  .popup-box {
+    transition: none;
+  }
+}
+</style>
+
+<script>
+(function () {
+  const popup = document.getElementById("welcomePopup");
+  const closeBtn = document.getElementById("closePopup");
+  const timerBar = document.getElementById("popupTimerBar");
+
+  let closeTimeout;
+  let animationFrame;
+  let startTime;
+
+  function closePopup() {
+    clearTimeout(closeTimeout);
+    cancelAnimationFrame(animationFrame);
+    popup.classList.remove("show");
+  }
+
+  function animateTimer(now) {
+    const elapsed = now - startTime;
+    const remaining = Math.max(0, 1 - elapsed / 5000);
+
+    timerBar.style.transform = `scaleX(${remaining})`;
+
+    if (elapsed < 5000 && popup.classList.contains("show")) {
+      animationFrame = requestAnimationFrame(animateTimer);
+    }
+  }
+
+  function showPopup() {
+    popup.classList.add("show");
+    startTime = performance.now();
+
+    animationFrame = requestAnimationFrame(animateTimer);
+    closeTimeout = setTimeout(closePopup, 5000);
+  }
+
+  closeBtn.addEventListener("click", closePopup);
+
+  popup.querySelector(".popup-overlay")
+    .addEventListener("click", closePopup);
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") closePopup();
+  });
+
+  if (document.readyState === "complete") {
+    setTimeout(showPopup, 300);
+  } else {
+    window.addEventListener("load", function () {
+      setTimeout(showPopup, 300);
+    }, { once: true });
+  }
+})();
+</script>
+
 </body></html>
