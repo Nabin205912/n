@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ne">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>निमन्त्रणा कार्ड पोर्टल | Sathi Printing Press</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bakbak+One&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Noto+Serif+Devanagari:wght@400;500;600;700&display=swap');
+:root{--pink:#cf0c65;--blue:#07519c;--green:#0ca45b;--navy:#062b60;--border:#d3e5f2;--pale:#f2faff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:#13385e;font-family:'Noto Serif Devanagari','Noto Sans Devanagari',serif;font-size:16px;line-height:1.6}
+a{color:inherit;text-decoration:none}button,input,select,textarea{font-family:'Noto Sans Devanagari','Noto Serif Devanagari',sans-serif;font-size:inherit}
+/* Apply the Nepali-friendly Google font to all page content */
+body, body p, body span, body label, body small, body strong, body em,
+body h1, body h2, body h3, body h4, body li, body a, body button,
+body input, body select, body textarea, body option, body div, body article,
+body aside, body section {
+    font-family: 'Noto Serif Devanagari', 'Noto Sans Devanagari', serif;
+}
+/* Keep the portal title's requested font stack */
+.page-title {
+    font-family: 'Bakbak One', 'Noto Serif Devanagari', serif;
+}
+.site-header{max-width:1600px;margin:auto;min-height:94px;padding:5px 4%;display:grid;grid-template-columns:230px 1fr 245px;gap:16px;align-items:center;background:#fff}
+.logo-link{display:block;width:100%;max-width:210px}.logo-link img{display:block;width:100%;height:auto;max-height:86px;object-fit:contain}
+.page-title{font-family:'Bakbak One','Sumana','Noto Serif Devanagari',serif;background:#f5ff00;background-image:linear-gradient(90deg,#f5ff00 0%,#fff900 72%,#fffde0 100%);color:#d30a28;font-weight:400;font-size:clamp(20px,2.2vw,32px);text-align:center;padding:10px 6px;line-height:1.6}
+.whatsapp-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--green);color:white;border:0;border-radius:28px;padding:12px 15px;font-weight:700;box-shadow:0 2px 5px #0001;cursor:pointer;white-space:nowrap}
+.wa-icon{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;flex:0 0 24px}.wa-svg{display:block;width:23px;height:23px;color:currentColor}
+.hero-banner{max-width:1600px;margin:0 auto 12px;padding:0 9px}.hero-banner img{width:100%;height:auto;display:block;object-fit:cover}
+.container{max-width:1600px;margin:0 auto;padding:0 3%}
+.cards-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px}
+.card-category{border:2px solid var(--accent,#d94b89);border-radius:9px;overflow:hidden;background:white;min-width:0;box-shadow:0 2px 5px #183d5d0d}
+.card-category h3{font-family:'Noto Sans Devanagari','Noto Serif Devanagari',sans-serif;margin:0;background:var(--accent,#cf0c65);color:white;font-size:clamp(12px,.95vw,16px);font-weight:700;text-align:center;padding:7px 3px;line-height:1.5;white-space:nowrap}
+.card-category img{width:100%;height:118px;display:block;object-fit:cover;background:#f9e4e8}
+.card-actions{padding:6px 7px 8px;display:flex;flex-direction:column;align-items:center;gap:5px;color:#07519c}
+.radio-line{display:flex;align-items:center;gap:3px;font-size:clamp(10px,.78vw,13px);white-space:nowrap;cursor:pointer}
+.radio-line input{margin:0;accent-color:#07519c;width:14px;height:14px}
+.choose-btn{border:0;background:#07519c;color:white;border-radius:18px;padding:5px 10px;font-size:12px;font-weight:700;cursor:pointer;line-height:1.3}
+.choose-btn:hover,.submit-btn:hover{filter:brightness(1.12)}
+.order-layout{display:grid;grid-template-columns:minmax(0,2.25fr) minmax(270px,.78fr);gap:13px;margin-top:13px}
+.order-panel{border:1px solid #bcdcf0;border-radius:9px;background:linear-gradient(120deg,#f4fbff,#fff);padding:12px 15px}
+.section-title{font-family:'Noto Sans Devanagari','Noto Serif Devanagari',sans-serif;margin:0 0 8px;color:#07519c;font-size:22px;line-height:1.5;font-weight:700}
+.section-title .doc{font-size:22px;margin-right:8px}
+.form-main{display:grid;grid-template-columns:1fr 1fr 1.15fr 1.1fr;gap:9px 12px}
+.field{min-width:0}.field label{display:block;font-size:12px;font-weight:700;color:#254668;margin-bottom:3px}.req{color:#d20b51}
+.field input,.field select,.field textarea{width:100%;min-width:0;border:1px solid #cbd8e2;border-radius:5px;background:white;padding:8px 9px;color:#344f69;font-size:12px;outline:0;height:35px}
+.field textarea{height:58px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{border-color:#1684c6;box-shadow:0 0 0 2px #1684c61c}
+.address{grid-column:span 2}.details{grid-column:1/-1}
+.design-box{grid-column:4;grid-row:1/span 3;border:1px solid #cce5f6;border-radius:9px;background:#f5fbff;padding:8px;display:flex;flex-direction:column;gap:8px}
+.mode-switch{display:flex;justify-content:center;gap:6px;flex-wrap:wrap}.mode-switch label{border:1px solid #c9dfef;border-radius:20px;padding:5px 8px;background:#fff;font-size:12px;font-weight:700;cursor:pointer}.mode-switch input{accent-color:#07519c}
+.design-note{background:#eaf6ff;color:#07519c;border-radius:7px;padding:9px;font-size:12px;line-height:1.45;text-align:center;font-weight:600}
+.qr-placeholder{border:1px dashed #8dbfe1;border-radius:7px;padding:8px;text-align:center;background:#fff;color:#07519c;font-weight:700;font-size:13px}
+.qr-placeholder img{display:block;width:min(100%,190px);height:auto;margin:6px auto;border-radius:4px}
+.upload-field{background:#fff;border:1px solid #cbdff0;border-radius:7px;padding:8px}
+.upload-field label{display:block;font-weight:700;color:#07519c;font-size:12px;margin-bottom:5px}
+.upload-field input{display:block;width:100%;font-size:12px;color:#284b69}
+.upload-help{font-size:11px;line-height:1.4;color:#526d83;margin-top:5px}
+.file-preview{font-size:11px;color:#0b7948;margin-top:4px;overflow-wrap:anywhere}
+.upload-hidden{display:none!important}
+@media(max-width:650px){.qr-placeholder img{width:min(100%,210px)}}
+.order-help{border:1px solid #cbe8dd;border-radius:9px;background:linear-gradient(135deg,#f2fff9,#f2faf6);padding:22px 16px 12px;display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.submit-btn{width:100%;border:0;border-radius:8px;padding:13px 12px;background:#0ca45b;color:#fff;font-weight:700;font-size:15px;cursor:pointer;line-height:1.5}
+.security-note{font-size:12px;font-weight:700;line-height:1.65;color:#214a73;padding:0 8px}
+.special-script{text-align:center;color:#27619b;font-family:serif;font-style:italic;font-size:17px;line-height:1.2;margin-top:auto;padding:7px}
+.progress{display:grid;grid-template-columns:1.08fr 1.25fr 1.25fr 1.4fr;gap:0;margin:13px 0 14px;overflow:hidden;border-radius:6px;border:1px solid #e0e6ee}
+.progress-title{background:#06458f;color:#fff;font-size:18px;font-weight:700;padding:12px;display:flex;align-items:center}
+.step{display:flex;align-items:center;gap:9px;padding:8px 11px;background:#fceaf2;border-right:2px solid white;min-width:0}
+.step:nth-child(3){background:#e8f5ff}.step:nth-child(4){background:#e8f7e9}.step:nth-child(5){background:#f0e8ff}
+.step-number{width:29px;height:29px;flex:0 0 29px;display:grid;place-items:center;background:#cf0c65;color:#fff;border-radius:50%;font-size:15px;font-weight:700}.step:nth-child(3) .step-number{background:#0874c1}.step:nth-child(4) .step-number{background:#188638}.step:nth-child(5) .step-number{background:#6a25b9}
+.step strong{display:block;font-size:13px;line-height:1.25}.step small{display:block;font-size:10px;line-height:1.3;color:#315474;margin-top:2px}
+.footer-image{max-width:1600px;margin:auto;padding:0 9px}.footer-image img{width:100%;height:auto;display:block}
+.bottom-line{height:7px;background:linear-gradient(to bottom,#cf0c65 0 2px,#ffe400 2px 5px,#07519c 5px)}
+.modal-backdrop{position:fixed;inset:0;background:#001a39a8;display:none;align-items:center;justify-content:center;padding:16px;z-index:20}.modal-backdrop.open{display:flex}.modal{background:white;border-radius:12px;padding:22px;width:min(500px,100%);max-height:92vh;overflow:auto;box-shadow:0 20px 60px #0004}.modal h2{margin:0 0 14px;color:#c20c65}.modal .field{margin-bottom:10px}.modal .field input,.modal .field select,.modal .field textarea{height:auto;font-size:14px;padding:10px}.modal .field textarea{height:75px}.modal-actions{display:flex;gap:10px}.modal-actions button{flex:1}.cancel{background:#e9eff5;color:#24415c;border:0;border-radius:7px;padding:11px;cursor:pointer}
+@media(max-width:1100px){.site-header{grid-template-columns:170px 1fr 205px}.cards-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.card-category h3{font-size:14px}.radio-line{font-size:12px}.order-layout{grid-template-columns:minmax(0,1.6fr) minmax(245px,.8fr)}.form-main{grid-template-columns:1fr 1fr}.design-box{grid-column:1/-1;grid-row:auto;display:grid;grid-template-columns:1fr 1fr}.mode-switch{grid-column:1/-1}.address{grid-column:span 1}}
+@media(max-width:650px){.site-header{grid-template-columns:110px 1fr;gap:8px;padding:7px 10px}.logo-link{max-width:110px}.page-title{font-size:17px;padding:8px 3px}.site-header .whatsapp-btn{grid-column:1/-1;justify-self:center;padding:8px 14px;font-size:12px}.hero-banner{padding:0 5px}.container{padding:0 9px}.cards-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.card-category h3{font-size:12px;white-space:normal;min-height:34px;display:grid;place-items:center}.card-category img{height:125px}.radio-line{font-size:11px}.choose-btn{font-size:11px}.order-layout{grid-template-columns:1fr}.order-panel{padding:11px}.form-main{grid-template-columns:1fr 1fr;gap:8px}.field label{font-size:11px}.field input,.field select{font-size:12px;padding:7px}.design-box{grid-template-columns:1fr}.mode-switch{grid-column:auto}.progress{grid-template-columns:1fr 1fr}.progress-title{grid-column:1/-1;justify-content:center}.step{padding:9px 7px}.step strong{font-size:12px}.footer-image{padding:0 5px}.section-title{font-size:20px}}
+</style>
+</head>
+<body>
+<header class="site-header">
+ <a class="logo-link" href="#top" aria-label="Sathi Printing Press गृहपृष्ठ"><img src="images1/logo.png" alt="Sathi Printing Press लोगो"></a>
+ <div class="page-title">निमन्त्रणा कार्ड पोर्टल</div>
+ <button class="whatsapp-btn" type="button" onclick="openOrder('')"><span class="wa-icon"><svg class="wa-svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.52 3.48A11.8 11.8 0 0 0 12.13 0C5.58 0 .25 5.33.25 11.88c0 2.1.55 4.15 1.6 5.96L.15 24l6.32-1.66a11.9 11.9 0 0 0 5.66 1.44h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.15-3.5-8.42ZM12.14 21.75a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.75.98 1-3.65-.24-.38a9.84 9.84 0 1 1 8.38 4.64Zm5.4-7.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.88-.78-1.48-1.75-1.66-2.05-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.08-.8.38-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.27.49 1.7.62.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/></svg></span> WhatsApp मा अर्डर गर्नुहोस्</button>
+</header>
+<section class="hero-banner" id="top"><img src="images1/hero-banner.png" alt="विवाह निमन्त्रणा कार्डको ब्यानर"></section>
+<main class="container">
+ <section class="cards-grid" aria-label="कार्ड डिजाइन छान्नुहोस्">
+  <article class="card-category" style="--accent:#e64b88"><h3>❀ ढाका कार्ड डिजाइन</h3><img src="images1/card-dhaka.png" alt="ढाका कार्ड डिजाइन"><div class="card-actions"><label class="radio-line"><input type="radio" name="cardChoice" value="ढाका कार्ड डिजाइन"> थप जानकारी/मूल्य सोध्नुहोस्</label><button class="choose-btn" onclick="openOrder('ढाका कार्ड डिजाइन')">कार्ड अर्डर गर्नुहोस्</button></div></article>
+  <article class="card-category" style="--accent:#1687d2"><h3>◇ फोल्डिङ कार्ड डिजाइन</h3><img src="images1/card-folding.png" alt="फोल्डिङ कार्ड डिजाइन"><div class="card-actions"><label class="radio-line"><input type="radio" name="cardChoice" value="फोल्डिङ कार्ड डिजाइन"> थप जानकारी/मूल्य सोध्नुहोस्</label><button class="choose-btn" onclick="openOrder('फोल्डिङ कार्ड डिजाइन')">कार्ड अर्डर गर्नुहोस्</button></div></article>
+  <article class="card-category" style="--accent:#4ab88d"><h3>✿ रोयल स्क्रोल कार्ड डिजाइन</h3><img src="images1/card-scroll.png" alt="रोयल स्क्रोल कार्ड डिजाइन"><div class="card-actions"><label class="radio-line"><input type="radio" name="cardChoice" value="रोयल स्क्रोल कार्ड डिजाइन"> थप जानकारी/मूल्य सोध्नुहोस्</label><button class="choose-btn" onclick="openOrder('रोयल स्क्रोल कार्ड डिजाइन')">कार्ड अर्डर गर्नुहोस्</button></div></article>
+  <article class="card-category" style="--accent:#a875d8"><h3>♛ इनभलप कार्ड डिजाइन</h3><img src="images1/card-envelope.png" alt="इनभलप कार्ड डिजाइन"><div class="card-actions"><label class="radio-line"><input type="radio" name="cardChoice" value="इनभलप कार्ड डिजाइन"> थप जानकारी/मूल्य सोध्नुहोस्</label><button class="choose-btn" onclick="openOrder('इनभलप कार्ड डिजाइन')">कार्ड अर्डर गर्नुहोस्</button></div></article>
+  <article class="card-category" style="--accent:#ed9b3d"><h3>♙ गोल्ड फोइल कार्ड डिजाइन</h3><img src="images1/card-gold.png" alt="गोल्ड फोइल कार्ड डिजाइन"><div class="card-actions"><label class="radio-line"><input type="radio" name="cardChoice" value="गोल्ड फोइल कार्ड डिजाइन"> थप जानकारी/मूल्य सोध्नुहोस्</label><button class="choose-btn" onclick="openOrder('गोल्ड फोइल कार्ड डिजाइन')">कार्ड अर्डर गर्नुहोस्</button></div></article>
+  <article class="card-category" style="--accent:#4bb6d1"><h3>❧ सिंगल सिट कार्ड डिजाइन</h3><img src="images1/card-single.png" alt="सिंगल सिट कार्ड डिजाइन"><div class="card-actions"><label class="radio-line"><input type="radio" name="cardChoice" value="सिंगल सिट कार्ड डिजाइन"> थप जानकारी/मूल्य सोध्नुहोस्</label><button class="choose-btn" onclick="openOrder('सिंगल सिट कार्ड डिजाइन')">कार्ड अर्डर गर्नुहोस्</button></div></article>
+  <article class="card-category" style="--accent:#e74b91"><h3>⚙ कस्टम डिजाइन</h3><img src="images1/card-custom.png" alt="कस्टम कार्ड डिजाइन"><div class="card-actions"><label class="radio-line"><input type="radio" name="cardChoice" value="कस्टम डिजाइन"> आफ्नै डिजाइन बनाउनुहोस्</label><button class="choose-btn" onclick="openOrder('कस्टम डिजाइन')">कार्ड अर्डर गर्नुहोस्</button></div></article>
+ </section>
+ <section class="order-layout" id="order">
+  <div class="order-panel">
+   <h2 class="section-title"><span class="doc">▤</span>अर्डर विवरण</h2>
+   <form id="orderForm">
+    <div class="form-main">
+     <div class="field"><label for="card">चयन गरिएको कार्ड <span class="req">*</span></label><select id="card" required><option value="">कार्ड छान्नुहोस्</option><option>ढाका कार्ड डिजाइन</option><option>फोल्डिङ कार्ड डिजाइन</option><option>रोयल स्क्रोल कार्ड डिजाइन</option><option>इनभलप कार्ड डिजाइन</option><option>गोल्ड फोइल कार्ड डिजाइन</option><option>सिंगल सिट कार्ड डिजाइन</option><option>कस्टम डिजाइन</option></select></div>
+     <div class="field"><label for="quantity">संख्या <span class="req">*</span></label><input id="quantity" type="number" min="1" placeholder="कति कार्ड चाहिन्छ?" required></div>
+     <div class="field"><label for="delivery">डेलिभरी / पिकअप <span class="req">*</span></label><select id="delivery" required><option value="">छान्नुहोस्</option><option>पसलबाट लिने</option><option>डेलिभरी चाहिन्छ</option></select></div>
+     <div class="design-box">
+      <div class="mode-switch"><label><input type="radio" name="designMode" value="तयार डिजाइन" checked> तयार डिजाइन</label><label><input type="radio" name="designMode" value="कस्टम डिजाइन"> कस्टम डिजाइन</label></div>
+      <div class="design-note">कस्टम डिजाइन छान्नुभयो भने आफ्नो डिजाइनको फोटो अपलोड गर्नुहोस्। भुक्तानी गरेपछि screenshot पनि अपलोड गर्नुहोस्।</div>
+      <div class="upload-field upload-hidden" id="customDesignWrap">
+       <label for="customDesignFile">आफ्नो डिजाइनको फोटो *</label>
+       <input id="customDesignFile" type="file" accept="image/*">
+       <div class="file-preview" id="designFileName"></div>
+      </div>
+      <div class="qr-placeholder">QR बाट भुक्तानी गर्नुहोस्<img src="images1/payment-qr.png" alt="Machhapuchchhre Bank भुक्तानी QR कोड"><small>भुक्तानी गरेपछि screenshot तल अपलोड गर्नुहोस्।</small></div>
+      <div class="upload-field">
+       <label for="paymentScreenshot">भुक्तानीको screenshot *</label>
+       <input id="paymentScreenshot" type="file" accept="image/*" required>
+       <div class="file-preview" id="paymentFileName"></div>
+      </div>
+     </div>
+     <div class="field"><label for="customer">ग्राहकको नाम <span class="req">*</span></label><input id="customer" placeholder="यहाँ आफ्नो नाम लेख्नुहोस्" required></div>
+     <div class="field"><label for="phone">मोबाइल नम्बर <span class="req">*</span></label><input id="phone" type="tel" pattern="[0-9+ -]{7,15}" placeholder="98XXXXXXXX" required></div>
+     <div class="field"><label for="advance">अग्रिम भुक्तानी रकम <span class="req">*</span></label><input id="advance" type="number" min="0" placeholder="रकम (रु.)"></div>
+     <div class="field"><label for="payment">भुक्तानी विधि <span class="req">*</span></label><select id="payment"><option>छान्नुहोस्</option><option>नगद</option><option>eSewa</option><option>Khalti</option><option>बैंक ट्रान्सफर</option></select></div>
+     <div class="field address"><label for="address">पूरा ठेगाना <span class="req">*</span></label><input id="address" placeholder="घर नं., टोल, गाउँ/नगर, जिल्ला" required></div>
+     <div class="field details"><label for="details">कार्डमा राख्ने विवरण / विशेष अनुरोध</label><textarea id="details" placeholder="दुलहा-दुलहीको नाम, विवाह मिति, निमन्त्रणा सन्देश आदि"></textarea></div>
+    </div>
+   </form>
+  </div>
+  <aside class="order-help">
+   <button class="submit-btn" type="submit" form="orderForm"><span class="wa-icon"><svg class="wa-svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.52 3.48A11.8 11.8 0 0 0 12.13 0C5.58 0 .25 5.33.25 11.88c0 2.1.55 4.15 1.6 5.96L.15 24l6.32-1.66a11.9 11.9 0 0 0 5.66 1.44h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.15-3.5-8.42ZM12.14 21.75a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.75.98 1-3.65-.24-.38a9.84 9.84 0 1 1 8.38 4.64Zm5.4-7.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.88-.78-1.48-1.75-1.66-2.05-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.08-.8.38-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.27.49 1.7.62.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/></svg></span> विवरण सहित WhatsApp मा अर्डर पठाउनुहोस् ›</button>
+   <div class="security-note">🛡 नोट: अग्रिम भुक्तानी पुष्टि भएपछि मात्र अर्डर कन्फर्म हुनेछ।</div>
+   <div class="special-script">✦ Beautiful Cards<br>for Your Special Day ♡</div>
+  </aside>
+ </section>
+ <section class="progress" aria-label="अर्डर गर्ने प्रक्रिया">
+  <div class="progress-title">अर्डर गर्ने प्रक्रिया</div>
+  <div class="step"><span class="step-number">1</span><span><strong>कार्ड छान्नुहोस्</strong><small>आफ्नो डिजाइन चयन गर्नुहोस् ।</small></span></div>
+  <div class="step"><span class="step-number">2</span><span><strong>विवरण भर्नुहोस्</strong><small>आवश्यक विवरण फारममा भर्नुहोस्।</small></span></div>
+  <div class="step"><span class="step-number">3</span><span><strong>अग्रिम भुक्तानी</strong><small>भुक्तानी विधि अनुसार रकम पठाउनुहोस्।</small></span></div>
+  <div class="step"><span class="step-number">4</span><span><strong>WhatsApp मा पठाउनुहोस्</strong><small>हामीलाई अर्डर विवरण पठाउनुहोस्।</small></span></div>
+ </section>
+</main>
+<div class="footer-image"><img src="images1/footer.png" alt="Sathi Printing Press सम्पर्क र फुटर"></div>
+<div class="bottom-line"></div>
+<div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+ <div class="modal"><h2 id="modalTitle">निमन्त्रणा कार्ड अर्डर</h2><p>तलको फारम भरेपछि अर्डर विवरण WhatsApp मा तयार हुनेछ।</p>
+  <div class="field"><label for="modalCard">कार्डको प्रकार *</label><select id="modalCard"><option value="">कार्ड छान्नुहोस्</option><option>ढाका कार्ड डिजाइन</option><option>फोल्डिङ कार्ड डिजाइन</option><option>रोयल स्क्रोल कार्ड डिजाइन</option><option>इनभलप कार्ड डिजाइन</option><option>गोल्ड फोइल कार्ड डिजाइन</option><option>सिंगल सिट कार्ड डिजाइन</option><option>कस्टम डिजाइन</option></select></div>
+  <div class="field"><label for="modalQty">संख्या *</label><input id="modalQty" type="number" min="1" placeholder="कति कार्ड?" required></div>
+  <div class="field"><label for="modalName">नाम *</label><input id="modalName" placeholder="तपाईंको नाम"></div>
+  <div class="field"><label for="modalPhone">मोबाइल नम्बर *</label><input id="modalPhone" type="tel" placeholder="98XXXXXXXX"></div>
+  <div class="modal-actions"><button class="submit-btn" onclick="submitQuickOrder()">WhatsApp मा पठाउनुहोस्</button><button class="cancel" onclick="closeOrder()">बन्द गर्नुहोस्</button></div>
+ </div>
+</div>
+<script>
+const WA_NUMBER='9779865858412';
+const cardSelect=document.getElementById('card');
+const customWrap=document.getElementById('customDesignWrap');
+const customFile=document.getElementById('customDesignFile');
+const paymentFile=document.getElementById('paymentScreenshot');
+function updateCustomDesign(){
+ const isCustom=cardSelect.value==='कस्टम डिजाइन' || document.querySelector('input[name="designMode"]:checked')?.value==='कस्टम डिजाइन';
+ customWrap.classList.toggle('upload-hidden',!isCustom);
+ customFile.required=isCustom;
+}
+function showFileName(input,outputId){
+ const output=document.getElementById(outputId);
+ output.textContent=input.files&&input.files[0] ? 'छानिएको: '+input.files[0].name : '';
+}
+cardSelect.addEventListener('change',updateCustomDesign);
+document.querySelectorAll('input[name="designMode"]').forEach(r=>r.addEventListener('change',updateCustomDesign));
+customFile.addEventListener('change',()=>showFileName(customFile,'designFileName'));
+paymentFile.addEventListener('change',()=>showFileName(paymentFile,'paymentFileName'));
+function openOrder(type){
+ if(type){
+  document.getElementById('card').value=type;
+  document.getElementById('modalCard').value=type;
+  document.querySelectorAll('input[name="cardChoice"]').forEach(r=>r.checked=r.value===type);
+  if(type==='कस्टम डिजाइन') document.querySelector('input[name="designMode"][value="कस्टम डिजाइन"]').checked=true;
+  updateCustomDesign();
+ }
+ document.getElementById('modal').classList.add('open')
+}
+function closeOrder(){document.getElementById('modal').classList.remove('open')}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeOrder()});
+document.querySelectorAll('input[name="cardChoice"]').forEach(r=>r.addEventListener('change',()=>{
+ document.getElementById('card').value=r.value;
+ if(r.value==='कस्टम डिजाइन')document.querySelector('input[name="designMode"][value="कस्टम डिजाइन"]').checked=true;
+ updateCustomDesign();
+}));
+function openWhatsApp(message){window.open('https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(message),'_blank')}
+function shareOrderWithFiles(message, files){
+ // Open the specific WhatsApp chat directly with the order text; browsers do not allow wa.me links to attach local files automatically.
+ const fileNames=files.map(file=>file.name).filter(Boolean);
+ const fullMessage=message + (fileNames.length ? `\n\nअपलोड गरिएका फाइलहरू (WhatsApp मा छुट्टै Attach गर्नुपर्नेछ):\n${fileNames.join('\n')}` : '');
+ openWhatsApp(fullMessage);
+ if(files.length){
+  setTimeout(()=>alert('तपाईंको अर्डर सन्देश WhatsApp मा तयार छ। WhatsApp को सामान्य wa.me लिंकबाट फोटो स्वतः Attach गर्न मिल्दैन। यही च्याटमा 📎 Attach थिचेर '+files.map(f=>f.name).join(' र ')+' छानी पठाउनुहोस्।'),500);
+ }
+}
+document.getElementById('orderForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ const val=id=>document.getElementById(id).value.trim();
+ const mode=document.querySelector('input[name="designMode"]:checked').value;
+ const isCustom=val('card')==='कस्टम डिजाइन'||mode==='कस्टम डिजाइन';
+ if(isCustom&&!customFile.files.length){alert('कस्टम डिजाइनका लागि डिजाइन फोटो अपलोड गर्नुहोस्।');customFile.focus();return}
+ if(!paymentFile.files.length){alert('कृपया भुक्तानी screenshot अपलोड गर्नुहोस्।');paymentFile.focus();return}
+ const msg=`नमस्कार Sathi Printing Press,
+मलाई निमन्त्रणा कार्ड अर्डर गर्नुछ।
+
+कार्ड: ${val('card')}
+डिजाइन: ${mode}
+संख्या: ${val('quantity')}
+डेलिभरी/पिकअप: ${val('delivery')}
+ग्राहकको नाम: ${val('customer')}
+मोबाइल नम्बर: ${val('phone')}
+अग्रिम रकम: रु. ${val('advance')||'उल्लेख छैन'}
+भुक्तानी विधि: ${val('payment')}
+ठेगाना: ${val('address')}
+थप विवरण: ${val('details')||'उल्लेख छैन'}
+डिजाइन फोटो: ${isCustom?'सन्देशसँग संलग्न गर्नुपर्ने':'लागू हुँदैन'}
+भुक्तानी screenshot: संलग्न गरिएको छ/गर्नुपर्नेछ`;
+ const files=[];
+ if(isCustom&&customFile.files[0])files.push(customFile.files[0]);
+ if(paymentFile.files[0])files.push(paymentFile.files[0]);
+ shareOrderWithFiles(msg,files);
+});
+function submitQuickOrder(){
+ const card=document.getElementById('modalCard').value,qty=document.getElementById('modalQty').value,name=document.getElementById('modalName').value.trim(),phone=document.getElementById('modalPhone').value.trim();
+ if(!card||!qty||!name||!phone){alert('कृपया कार्ड, संख्या, नाम र मोबाइल नम्बर भर्नुहोस्।');return}
+ openWhatsApp(`नमस्कार Sathi Printing Press,\nमलाई निमन्त्रणा कार्ड अर्डर गर्नुछ।\nकार्ड: ${card}\nसंख्या: ${qty}\nनाम: ${name}\nमोबाइल: ${phone}`);
+ closeOrder();
+}
+</script>
+</body>
+</html>
