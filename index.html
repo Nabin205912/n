@@ -32,7 +32,7 @@
 <header class="header"><div class="wide headin">
   <a class="logo" href="#"><img src="public/uploads/branding/sathi-logo.jpg" alt="Sathi Printing Press"></a>
   <nav class="mainnav">
-    <a class="active" href="#">⌂ &nbsp;Home</a><a href="#about">About Us</a><a href="#services">Services</a><a href="#products">Products⌄</a><a href="#gallery">Gallery</a><a href="#order">Order Now</a><a href="https://www.facebook.com" target="_blank">Contact</a>
+    <a class="active" href="#">⌂ &nbsp;Home</a><a href="#about">About Us</a><a href="#services">Services</a><a class="wedding-nav-tab" href="wedding.html"><span class="wedding-nav-icon">💍</span> Wedding Cards <span class="wedding-new-pill">NEW</span></a><a href="#gallery">Gallery</a><a href="#order">Order Now</a><a href="https://www.facebook.com" target="_blank">Contact</a>
 <span id="customNavButtons" style="display:contents"></span>
   </nav>
   <a class="adminbtn" href="admin.html">🔒 Admin Login</a>
@@ -270,5 +270,76 @@
 })();
 </script>
   <meta name="google-site-verification" content="d_Ai6txYyZCT82D8CUWY5LLKnOhOrV5TT4G2Q0xCBCg" />
+
+
+<style>
+/* Wedding Cards tab: floating glow outline */
+.wedding-nav-tab {
+  position: relative;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  padding: 10px 13px !important;
+  border-radius: 999px;
+  color: #8b1748 !important;
+  font-weight: 800;
+  text-decoration: none !important;
+  background: linear-gradient(120deg,#fff5f8,#ffe2ed,#fff8e9);
+  border: 1px solid rgba(219,39,119,.58);
+  box-shadow: 0 4px 14px rgba(190,24,93,.16), 0 0 0 2px rgba(244,63,94,.08);
+  isolation: isolate;
+  animation: wedding-tab-float 3.2s ease-in-out infinite, wedding-tab-glow 2.2s ease-in-out infinite;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.wedding-nav-tab::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 1.5px solid rgba(236,72,153,.72);
+  border-radius: 999px;
+  pointer-events: none;
+  animation: wedding-tab-outline 2.2s ease-out infinite;
+}
+.wedding-nav-tab:hover {
+  transform: translateY(-3px) scale(1.035);
+  box-shadow: 0 8px 22px rgba(190,24,93,.27), 0 0 15px rgba(236,72,153,.4);
+}
+.wedding-nav-icon { animation: wedding-heartbeat 2s ease-in-out infinite; }
+.wedding-new-pill {
+  position: relative;
+  top: -1px;
+  padding: 3px 6px;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(135deg,#f43f5e,#be185d);
+  font: 800 9px/1.2 Arial,sans-serif;
+  letter-spacing: .5px;
+  box-shadow: 0 0 0 3px rgba(244,63,94,.10), 0 0 10px rgba(244,63,94,.35);
+}
+@keyframes wedding-tab-float {
+  0%,100% { translate: 0 0; }
+  50% { translate: 0 -3px; }
+}
+@keyframes wedding-tab-glow {
+  0%,100% { box-shadow: 0 4px 14px rgba(190,24,93,.16), 0 0 0 2px rgba(244,63,94,.08); }
+  50% { box-shadow: 0 6px 20px rgba(190,24,93,.28), 0 0 13px rgba(236,72,153,.38), 0 0 0 3px rgba(244,63,94,.13); }
+}
+@keyframes wedding-tab-outline {
+  0% { transform: scale(1); opacity: .85; }
+  100% { transform: scale(1.12); opacity: 0; }
+}
+@keyframes wedding-heartbeat {
+  0%,100% { transform: scale(1); }
+  12% { transform: scale(1.18); }
+  24% { transform: scale(1); }
+}
+@media (max-width: 760px) {
+  .wedding-nav-tab { padding: 8px 10px !important; font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wedding-nav-icon, .wedding-nav-tab, .wedding-nav-tab::after { animation: none !important; transition: none !important; }
+}
+</style>
 
 </body></html>
