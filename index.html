@@ -94,7 +94,61 @@
 
 <section class="section" id="track"><div class="wide"><div class="trackbox" style="background:#062d58;color:#fff;border-radius:22px;padding:28px"><div class="eyebrow">Order Tracking</div><h2>Track Your Printing Order</h2><p>Enter the Order ID received after submission.</p><form id="trackForm" class="trackform"><input name="orderId" placeholder="SPP-YYYYMMDD-ABCDE" required><button class="orderbtn" type="submit">Track Order</button></form><div id="trackResult"></div></div></div></section>
 
-<footer id="contact"><div class="wide foot"><div><img src="public/uploads/branding/sathi-logo.jpg"><p>Print with Trust...</p></div><div><b>Sathi Printing Press</b><span>Dhangadhi, Buspark, Kailali</span><a href="mailto:sathiprintingpress@gmail.com">sathiprintingpress@gmail.com</a><a href="tel:+9779841234567">+977-9865858412</a></div><div><b>Quick Links</b><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#order">Order Now</a><a href="admin.html">Admin Login</a></div><div><b>Follow Us</b><div class="social big"><span>f</span><span>▶</span><span>◎</span></div></div></div><div class="copyright">© 2026 Sathi Printing Press. All rights reserved.</div></footer>
+<footer id="contact"><div class="wide foot"><div><img src="public/uploads/branding/sathi-logo.jpg"><p>Print with Trust...</p></div><div><b>Sathi Printing Press</b><span>Dhangadhi, Buspark, Kailali</span><a href="mailto:sathiprintingpress@gmail.com">sathiprintingpress@gmail.com</a><a href="tel:+9779841234567">+977-9865858412</a></div><div><b>Quick Links</b><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#order">Order Now</a><a href="admin.html">Admin Login</a></div><div class="follow-us">
+  <b>Follow Us</b>
+
+  <div class="social big">
+    <a href="https://www.facebook.com/sathi.chhapakhana/"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Sathi Printing Press Facebook">
+      f
+    </a>
+  </div>
+</div>
+
+<style>
+.follow-us {
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.follow-us b {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 18px;
+}
+
+.social.big {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.social.big a {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #1877f2;
+  border-radius: 50%;
+  background: #1877f2;
+  color: #fff;
+  font-size: 28px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 0 12px rgba(24,119,242,.35);
+  transition: all .3s ease;
+}
+
+.social.big a:hover {
+  background: #fff;
+  color: #1877f2;
+  transform: translateY(-5px) scale(1.08);
+  box-shadow: 0 0 22px rgba(24,119,242,.8);
+}
+</style><span>▶</span><span>◎</span></div></div></div><div class="copyright">© 2026 Sathi Printing Press. All rights reserved.</div></footer>
 <script>
 (function(){
  const defaults=[{id:'order',label:'Order Now',url:'#order',icon:'🛒',style:'primary',target:'_self',enabled:true,order:0}];
