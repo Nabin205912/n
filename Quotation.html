@@ -1,368 +1,125 @@
 
-<style>
-/* ===== PREMIUM MOVING GRADIENT ALERT ===== */
-.service-alert-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 99999;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background: rgba(3, 7, 24, .78);
-    backdrop-filter: blur(10px);
-}
+<button type="button" class="tool-link" id="downloadBtn">
+  ⬇ Download PDF
+</button>
 
-.service-alert-overlay.show {
-    display: flex;
-    animation: overlayIn .3s ease both;
-}
-
-.service-alert-box {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    width: 100%;
-    max-width: 445px;
-    padding: 2px;
-    border-radius: 26px;
-    background: linear-gradient(
-        120deg, #22d3ee, #6366f1, #d946ef,
-        #f59e0b, #22d3ee
-    );
-    background-size: 350% 350%;
-    animation: borderFlow 7s ease infinite, alertIn .45s ease both;
-    box-shadow:
-        0 0 25px rgba(99,102,241,.3),
-        0 0 65px rgba(34,211,238,.15),
-        0 25px 90px rgba(0,0,0,.5);
-}
-
-.service-alert-inner {
-    position: relative;
-    overflow: hidden;
-    padding: 34px 27px 27px;
-    border-radius: 24px;
-    text-align: center;
-    color: #fff;
-    background: linear-gradient(
-        135deg,
-        #08152f 0%,
-        #172554 35%,
-        #312e81 65%,
-        #111827 100%
-    );
-    background-size: 250% 250%;
-    animation: backgroundFlow 12s ease infinite;
-}
-
-/* Animated light streak */
-.service-alert-inner::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    width: 180%;
-    height: 150%;
-    top: -30%;
-    left: -130%;
-    transform: rotate(-25deg);
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,.08),
-        rgba(103,232,249,.16),
-        transparent
-    );
-    animation: lightSweep 6s ease-in-out infinite;
-    pointer-events: none;
-}
-
-/* Soft glowing background patterns */
-.service-alert-inner::after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    width: 240px;
-    height: 240px;
-    right: -95px;
-    top: -105px;
-    border-radius: 50%;
-    background: radial-gradient(
-        circle,
-        rgba(217,70,239,.32),
-        rgba(99,102,241,.12) 45%,
-        transparent 70%
-    );
-    animation: orbFloat 7s ease-in-out infinite alternate;
-    pointer-events: none;
-}
-
-.service-alert-close-x {
-    position: absolute;
-    top: 14px;
-    right: 15px;
-    width: 34px;
-    height: 34px;
-    border: 1px solid rgba(255,255,255,.2);
-    border-radius: 50%;
-    background: rgba(255,255,255,.08);
-    color: white;
-    font-size: 21px;
-    cursor: pointer;
-    transition: .25s;
-}
-
-.service-alert-close-x:hover {
-    transform: rotate(90deg);
-    background: rgba(255,255,255,.2);
-}
-
-.service-alert-icon {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 82px;
-    height: 82px;
-    margin: 3px auto 20px;
-    border-radius: 25px;
-    border: 1px solid rgba(255,255,255,.24);
-    background: linear-gradient(
-        135deg,
-        rgba(251,191,36,.24),
-        rgba(249,115,22,.08)
-    );
-    box-shadow:
-        0 0 25px rgba(251,191,36,.16),
-        inset 0 0 20px rgba(255,255,255,.05);
-    font-size: 37px;
-    animation: iconPulse 2.5s ease-in-out infinite;
-}
-
-.service-alert-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 13px;
-    margin-bottom: 16px;
-    border: 1px solid rgba(251,191,36,.32);
-    border-radius: 30px;
-    background: rgba(251,191,36,.09);
-    color: #fde68a;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1.3px;
-}
-
-.service-alert-status span {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #fbbf24;
-    box-shadow: 0 0 10px #fbbf24;
-    animation: statusBlink 1.5s infinite;
-}
-
-.service-alert-inner h2 {
-    margin: 0 0 14px;
-    color: #fff;
-    font-size: clamp(21px, 5vw, 26px);
-    line-height: 1.5;
-    font-weight: 800;
-    text-shadow: 0 2px 20px rgba(129,140,248,.25);
-}
-
-.service-alert-inner p {
-    margin: 0;
-    color: #dbeafe;
-    font-size: 14px;
-    line-height: 2;
-}
-
-.service-alert-inner strong {
-    color: #67e8f9;
-}
-
-.service-alert-divider {
-    height: 1px;
-    margin: 23px 0 17px;
-    background: linear-gradient(
-        90deg, transparent,
-        rgba(165,180,252,.65),
-        rgba(103,232,249,.65),
-        transparent
-    );
-}
-
-.service-alert-note {
-    color: #c7d2fe;
-    font-size: 12px;
-    line-height: 1.9;
-}
-
-.service-alert-close {
-    width: 100%;
-    margin-top: 24px;
-    padding: 14px 18px;
-    border: 1px solid rgba(255,255,255,.25);
-    border-radius: 13px;
-    color: #fff;
-    background: linear-gradient(
-        100deg, #2563eb, #7c3aed, #0891b2, #2563eb
-    );
-    background-size: 250% 100%;
-    box-shadow: 0 7px 25px rgba(59,130,246,.25);
-    font-size: 14px;
-    font-weight: 800;
-    cursor: pointer;
-    transition: transform .25s, box-shadow .25s;
-    animation: buttonFlow 5s linear infinite;
-}
-
-.service-alert-close:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(99,102,241,.4);
-}
-
-.service-alert-close:focus-visible,
-.service-alert-close-x:focus-visible {
-    outline: 2px solid #67e8f9;
-    outline-offset: 4px;
-}
-
-/* Animations */
-@keyframes borderFlow {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
-@keyframes backgroundFlow {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
-@keyframes lightSweep {
-    0%, 15% { left: -130%; }
-    65%, 100% { left: 120%; }
-}
-@keyframes orbFloat {
-    from { transform: translate(0,0) scale(1); }
-    to { transform: translate(-25px,25px) scale(1.2); }
-}
-@keyframes iconPulse {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-}
-@keyframes statusBlink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: .35; }
-}
-@keyframes buttonFlow {
-    to { background-position: 250% 0; }
-}
-@keyframes overlayIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-@keyframes alertIn {
-    from { opacity: 0; transform: translateY(18px) scale(.94); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .service-alert-box,
-    .service-alert-inner,
-    .service-alert-inner::before,
-    .service-alert-inner::after,
-    .service-alert-icon,
-    .service-alert-status span,
-    .service-alert-close {
-        animation: none !important;
-    }
-    * { scroll-behavior: auto !important; }
-}
-</style>
-
-<div class="service-alert-overlay" id="serviceAlert"
-     role="dialog" aria-modal="true"
-     aria-labelledby="serviceAlertTitle">
-    <div class="service-alert-box">
-        <div class="service-alert-inner">
-
-            <button type="button" class="service-alert-close-x"
-                    id="closeServiceAlertX"
-                    aria-label="बन्द गर्नुहोस्">×</button>
-
-            <div class="service-alert-icon" aria-hidden="true">⚠️</div>
-
-            <div class="service-alert-status">
-                <span></span> SERVICE TEMPORARILY UNAVAILABLE
-            </div>
-
-            <h2 id="serviceAlertTitle">
-                सेवा अस्थायी रूपमा बन्द
-            </h2>
-
-            <p>
-                क्षमाप्रार्थी छौँ! विविध प्राविधिक तथा अन्य कारणले
-                <strong>PDF Download</strong> सेवा हालका लागि बन्द गरिएको छ।
-                <br>
-                कृपया सेवा पुनः सञ्चालन नभएसम्म प्रतीक्षा गर्नुहोला।
-            </p>
-
-            <div class="service-alert-divider"></div>
-
-            <div class="service-alert-note">
-                🙏 तपाईंको धैर्य र सहयोगका लागि धन्यवाद।<br>
-                <strong>Sathi Printing Press</strong>
-            </div>
-
-            <button type="button" class="service-alert-close"
-                    id="closeServiceAlert">
-                ✓ &nbsp; बुझें, बन्द गर्नुहोस्
-            </button>
-        </div>
+<div id="serviceAlert" class="service-alert-overlay">
+  <div class="service-alert-box">
+    <div class="alert-pattern"></div>
+    <button id="closeServiceAlertX" class="alert-x">×</button>
+    <div class="alert-icon">⚠️</div>
+    <div class="alert-label">SERVICE TEMPORARILY UNAVAILABLE</div>
+    <h2>सेवा अस्थायी रूपमा बन्द</h2>
+    <p>
+      क्षमाप्रार्थी छौँ! विविध प्राविधिक तथा अन्य कारणले
+      <strong>PDF Download</strong> सेवा हालका लागि बन्द गरिएको छ।
+      कृपया सेवा पुनः सञ्चालन नभएसम्म प्रतीक्षा गर्नुहोला।
+    </p>
+    <div class="alert-footer">🙏 तपाईंको धैर्य र सहयोगका लागि धन्यवाद।<br>
+      <b>Sathi Printing Press</b>
     </div>
+    <button id="closeServiceAlert" class="alert-close">
+      ✓ बुझें, बन्द गर्नुहोस्
+    </button>
+  </div>
 </div>
 
+<style>
+.service-alert-overlay {
+  display:none; position:fixed; inset:0; z-index:999999;
+  align-items:center; justify-content:center; padding:18px;
+  background:rgba(2,6,23,.78); backdrop-filter:blur(9px);
+}
+.service-alert-overlay.show {display:flex; animation:fadeAlert .3s ease}
+.service-alert-box {
+  position:relative; isolation:isolate; overflow:hidden;
+  box-sizing:border-box; width:100%; max-width:440px;
+  padding:3px; border-radius:25px;
+  background:linear-gradient(120deg,#22d3ee,#6366f1,#e879f9,#fbbf24,#22d3ee);
+  background-size:300% 300%; animation:gradientMove 5s linear infinite, popAlert .35s ease;
+  box-shadow:0 0 35px #6366f155,0 25px 80px #0008;
+}
+.service-alert-box > *:not(.alert-pattern) {position:relative}
+.alert-pattern {
+  position:absolute; inset:3px; z-index:-1; border-radius:22px;
+  background:
+    radial-gradient(circle at 15% 20%,#22d3ee38 0 2px,transparent 3px),
+    radial-gradient(circle at 85% 30%,#e879f940 0 3px,transparent 4px),
+    radial-gradient(circle at 25% 80%,#818cf840 0 2px,transparent 3px),
+    repeating-linear-gradient(135deg,transparent 0 17px,#ffffff08 18px 19px),
+    linear-gradient(135deg,#07152e,#1e1b4b,#111827);
+  background-size:100% 100%,100% 100%,100% 100%,auto,300% 300%;
+  animation:gradientMove 9s ease infinite;
+}
+.service-alert-box {
+  padding:32px 25px 25px;
+  text-align:center; color:white;
+}
+.alert-x {
+  position:absolute!important; top:12px; right:12px;
+  width:34px; height:34px; border-radius:50%;
+  border:1px solid #ffffff44; background:#ffffff12;
+  color:white; font-size:23px; cursor:pointer;
+}
+.alert-icon {
+  display:grid; place-items:center; margin:4px auto 16px;
+  width:76px; height:76px; border-radius:23px;
+  background:linear-gradient(135deg,#f59e0b35,#f9731630);
+  border:1px solid #fbbf2466; font-size:35px;
+  box-shadow:0 0 28px #f59e0b20;
+  animation:iconFloat 2.5s ease-in-out infinite;
+}
+.alert-label {
+  display:inline-block; padding:7px 12px; margin-bottom:14px;
+  border:1px solid #fbbf2455; border-radius:30px;
+  color:#fde68a; background:#fbbf2412;
+  font-size:10px; font-weight:800; letter-spacing:1px;
+}
+.service-alert-box h2 {margin:0 0 12px;font-size:24px;color:white}
+.service-alert-box p {margin:0;color:#dbeafe;font-size:14px;line-height:2}
+.service-alert-box strong {color:#67e8f9}
+.alert-footer {
+  margin-top:20px;padding-top:16px;border-top:1px solid #ffffff26;
+  color:#c7d2fe;font-size:12px;line-height:2
+}
+.alert-close {
+  width:100%; margin-top:22px; padding:14px;
+  border:1px solid #ffffff40; border-radius:12px;
+  color:white; font-weight:800; font-size:14px; cursor:pointer;
+  background:linear-gradient(100deg,#2563eb,#7c3aed,#0891b2,#2563eb);
+  background-size:250% 100%; animation:gradientMove 5s linear infinite;
+}
+.alert-close:hover {filter:brightness(1.15);transform:translateY(-1px)}
+@keyframes gradientMove {to{background-position:300% 50%}}
+@keyframes fadeAlert {from{opacity:0}to{opacity:1}}
+@keyframes popAlert {from{opacity:0;transform:translateY(15px) scale(.95)}to{opacity:1;transform:none}}
+@keyframes iconFloat {50%{transform:translateY(-5px)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important}}
+</style>
+
 <script>
-(function () {
-    const alertBox = document.getElementById("serviceAlert");
-    const closeBtn = document.getElementById("closeServiceAlert");
-    const closeX = document.getElementById("closeServiceAlertX");
-    const downloadBtn = document.getElementById("downloadBtn");
+(function(){
+  const modal=document.getElementById('serviceAlert');
+  const download=document.getElementById('downloadBtn');
+  const close=document.getElementById('closeServiceAlert');
+  const x=document.getElementById('closeServiceAlertX');
 
-    if (!alertBox || !closeBtn) return;
+  if(!modal || !download || !close) return;
 
-    function showAlert() {
-        alertBox.classList.add("show");
-        closeBtn.focus();
-    }
+  download.addEventListener('click',function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    modal.classList.add('show');
+  },true);
 
-    function hideAlert() {
-        alertBox.classList.remove("show");
-        if (downloadBtn) downloadBtn.focus();
-    }
-
-    closeBtn.addEventListener("click", hideAlert);
-    if (closeX) closeX.addEventListener("click", hideAlert);
-
-    alertBox.addEventListener("click", function (event) {
-        if (event.target === alertBox) hideAlert();
-    });
-
-    document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape" &&
-            alertBox.classList.contains("show")) {
-            hideAlert();
-        }
-    });
-
-    if (downloadBtn) {
-        downloadBtn.addEventListener("click", function (event) {
-            event.preventDefault();
-            showAlert();
-        });
-    }
-
-    // Optional: call showAlert() to open the alert programmatically.
+  function hide(){modal.classList.remove('show')}
+  close.addEventListener('click',hide);
+  if(x)x.addEventListener('click',hide);
+  modal.addEventListener('click',function(e){
+    if(e.target===modal)hide();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape')hide();
+  });
 })();
 </script>
