@@ -1,125 +1,532 @@
 
-<button type="button" class="tool-link" id="downloadBtn">
-  ⬇ Download PDF
-</button>
+<!-- FULL SCREEN PREMIUM SERVICE ALERT -->
+<div id="serviceAlert" class="premium-alert">
+  <canvas id="alertParticles"></canvas>
+  <div class="aurora aurora-one"></div>
+  <div class="aurora aurora-two"></div>
+  <div class="aurora aurora-three"></div>
+  <div class="alert-grid"></div>
 
-<div id="serviceAlert" class="service-alert-overlay">
-  <div class="service-alert-box">
-    <div class="alert-pattern"></div>
-    <button id="closeServiceAlertX" class="alert-x">×</button>
-    <div class="alert-icon">⚠️</div>
-    <div class="alert-label">SERVICE TEMPORARILY UNAVAILABLE</div>
-    <h2>सेवा अस्थायी रूपमा बन्द</h2>
-    <p>
+  <div class="premium-card">
+    <div class="card-top-line"></div>
+
+    <div class="live-status">
+      <span class="live-dot"></span>
+      SERVICE NOTICE
+    </div>
+
+    <div class="warning-orbit">
+      <div class="orbit orbit-a"></div>
+      <div class="orbit orbit-b"></div>
+      <div class="warning-symbol">!</div>
+      <span class="spark spark-a">✦</span>
+      <span class="spark spark-b">✧</span>
+    </div>
+
+    <div class="eyebrow">IMPORTANT ANNOUNCEMENT</div>
+
+    <h1>सेवा अस्थायी रूपमा बन्द</h1>
+
+    <div class="title-line"></div>
+
+    <p class="alert-message">
       क्षमाप्रार्थी छौँ! विविध प्राविधिक तथा अन्य कारणले
       <strong>PDF Download</strong> सेवा हालका लागि बन्द गरिएको छ।
       कृपया सेवा पुनः सञ्चालन नभएसम्म प्रतीक्षा गर्नुहोला।
     </p>
-    <div class="alert-footer">🙏 तपाईंको धैर्य र सहयोगका लागि धन्यवाद।<br>
-      <b>Sathi Printing Press</b>
+
+    <div class="notice-panel">
+      <span class="notice-icon">ⓘ</span>
+      <span>यो सेवा अर्को सूचना जारी नभएसम्म उपलब्ध हुने छैन।</span>
     </div>
-    <button id="closeServiceAlert" class="alert-close">
-      ✓ बुझें, बन्द गर्नुहोस्
+
+    <button type="button" id="closeServiceAlert" class="premium-close">
+      <span>बुझें, बन्द गर्नुहोस्</span>
+      <span class="close-arrow">↗</span>
     </button>
+
+    <div class="brand-signature">
+      <span class="brand-line"></span>
+      <span>SATHI PRINTING PRESS</span>
+      <span class="brand-line"></span>
+    </div>
+  </div>
+
+  <div class="screen-footer">
+    <span>✦</span> THANK YOU FOR YOUR UNDERSTANDING
   </div>
 </div>
 
 <style>
-.service-alert-overlay {
-  display:none; position:fixed; inset:0; z-index:999999;
-  align-items:center; justify-content:center; padding:18px;
-  background:rgba(2,6,23,.78); backdrop-filter:blur(9px);
+#serviceAlert, #serviceAlert * { box-sizing:border-box; }
+
+#serviceAlert.premium-alert {
+  position:fixed;
+  inset:0;
+  z-index:2147483000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  padding:24px 16px 55px;
+  isolation:isolate;
+  background:linear-gradient(-45deg,
+    #071329,#111b49,#241044,#073b55,#15133c,#092b3a);
+  background-size:400% 400%;
+  animation:screenGradient 18s ease infinite;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:#f8fafc;
 }
-.service-alert-overlay.show {display:flex; animation:fadeAlert .3s ease}
-.service-alert-box {
-  position:relative; isolation:isolate; overflow:hidden;
-  box-sizing:border-box; width:100%; max-width:440px;
-  padding:3px; border-radius:25px;
-  background:linear-gradient(120deg,#22d3ee,#6366f1,#e879f9,#fbbf24,#22d3ee);
-  background-size:300% 300%; animation:gradientMove 5s linear infinite, popAlert .35s ease;
-  box-shadow:0 0 35px #6366f155,0 25px 80px #0008;
+
+#serviceAlert[hidden] { display:none !important; }
+
+#alertParticles {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  pointer-events:none;
 }
-.service-alert-box > *:not(.alert-pattern) {position:relative}
-.alert-pattern {
-  position:absolute; inset:3px; z-index:-1; border-radius:22px;
-  background:
-    radial-gradient(circle at 15% 20%,#22d3ee38 0 2px,transparent 3px),
-    radial-gradient(circle at 85% 30%,#e879f940 0 3px,transparent 4px),
-    radial-gradient(circle at 25% 80%,#818cf840 0 2px,transparent 3px),
-    repeating-linear-gradient(135deg,transparent 0 17px,#ffffff08 18px 19px),
-    linear-gradient(135deg,#07152e,#1e1b4b,#111827);
-  background-size:100% 100%,100% 100%,100% 100%,auto,300% 300%;
-  animation:gradientMove 9s ease infinite;
+
+#serviceAlert .aurora {
+  position:absolute;
+  z-index:-1;
+  width:min(65vw,650px);
+  aspect-ratio:1;
+  border-radius:50%;
+  filter:blur(85px);
+  opacity:.34;
+  pointer-events:none;
+  animation:auroraMove 15s ease-in-out infinite alternate;
 }
-.service-alert-box {
-  padding:32px 25px 25px;
-  text-align:center; color:white;
+
+#serviceAlert .aurora-one {
+  top:-25%;left:-15%;
+  background:#06b6d4;
 }
-.alert-x {
-  position:absolute!important; top:12px; right:12px;
-  width:34px; height:34px; border-radius:50%;
-  border:1px solid #ffffff44; background:#ffffff12;
-  color:white; font-size:23px; cursor:pointer;
+#serviceAlert .aurora-two {
+  right:-20%;bottom:-30%;
+  background:#a855f7;
+  animation-delay:-5s;
 }
-.alert-icon {
-  display:grid; place-items:center; margin:4px auto 16px;
-  width:76px; height:76px; border-radius:23px;
-  background:linear-gradient(135deg,#f59e0b35,#f9731630);
-  border:1px solid #fbbf2466; font-size:35px;
-  box-shadow:0 0 28px #f59e0b20;
-  animation:iconFloat 2.5s ease-in-out infinite;
+#serviceAlert .aurora-three {
+  top:35%;left:38%;
+  width:min(35vw,350px);
+  background:#2563eb;
+  animation-delay:-9s;
+  opacity:.24;
 }
-.alert-label {
-  display:inline-block; padding:7px 12px; margin-bottom:14px;
-  border:1px solid #fbbf2455; border-radius:30px;
-  color:#fde68a; background:#fbbf2412;
-  font-size:10px; font-weight:800; letter-spacing:1px;
+
+#serviceAlert .alert-grid {
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  opacity:.14;
+  background-image:
+    linear-gradient(#94a3b8 1px,transparent 1px),
+    linear-gradient(90deg,#94a3b8 1px,transparent 1px);
+  background-size:52px 52px;
+  mask-image:radial-gradient(ellipse at center,#000,transparent 78%);
 }
-.service-alert-box h2 {margin:0 0 12px;font-size:24px;color:white}
-.service-alert-box p {margin:0;color:#dbeafe;font-size:14px;line-height:2}
-.service-alert-box strong {color:#67e8f9}
-.alert-footer {
-  margin-top:20px;padding-top:16px;border-top:1px solid #ffffff26;
-  color:#c7d2fe;font-size:12px;line-height:2
+
+#serviceAlert .premium-card {
+  position:relative;
+  width:100%;
+  max-width:490px;
+  max-height:calc(100dvh - 95px);
+  overflow:auto;
+  padding:35px 34px 25px;
+  text-align:center;
+  border:1px solid rgba(255,255,255,.19);
+  border-radius:30px;
+  background:linear-gradient(
+    145deg,rgba(15,23,42,.83),rgba(30,27,75,.73)
+  );
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  box-shadow:
+    0 35px 100px rgba(0,0,0,.42),
+    0 0 45px rgba(56,189,248,.12),
+    inset 0 1px rgba(255,255,255,.13);
+  animation:cardEntrance .8s cubic-bezier(.2,.8,.2,1) both;
 }
-.alert-close {
-  width:100%; margin-top:22px; padding:14px;
-  border:1px solid #ffffff40; border-radius:12px;
-  color:white; font-weight:800; font-size:14px; cursor:pointer;
+
+#serviceAlert .card-top-line {
+  position:absolute;
+  top:0;left:12%;right:12%;
+  height:2px;
+  background:linear-gradient(90deg,transparent,#67e8f9,#c084fc,#f0abfc,transparent);
+  background-size:200% 100%;
+  animation:lineGlow 4s linear infinite;
+}
+
+#serviceAlert .live-status {
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:8px 14px;
+  border:1px solid rgba(125,211,252,.24);
+  border-radius:40px;
+  background:rgba(14,165,233,.09);
+  color:#bae6fd;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+
+#serviceAlert .live-dot {
+  width:7px;height:7px;
+  flex-shrink:0;
+  border-radius:50%;
+  background:#67e8f9;
+  box-shadow:0 0 12px #22d3ee;
+  animation:dotPulse 1.5s infinite;
+}
+
+#serviceAlert .warning-orbit {
+  position:relative;
+  display:grid;
+  place-items:center;
+  width:106px;height:106px;
+  margin:25px auto 19px;
+}
+
+#serviceAlert .warning-symbol {
+  display:grid;
+  place-items:center;
+  width:70px;height:70px;
+  border:1px solid rgba(253,224,71,.65);
+  border-radius:23px;
+  color:#fef08a;
+  background:linear-gradient(145deg,#f59e0b25,#ea580c15);
+  font-size:43px;
+  font-weight:500;
+  box-shadow:0 0 38px #f59e0b20,inset 0 0 18px #fbbf2415;
+  animation:warningFloat 3s ease-in-out infinite;
+}
+
+#serviceAlert .orbit {
+  position:absolute;
+  inset:0;
+  border:1px solid rgba(103,232,249,.35);
+  border-radius:50%;
+  animation:orbitSpin 10s linear infinite;
+}
+
+#serviceAlert .orbit-a {
+  transform:scaleY(.48) rotate(25deg);
+  border-color:#67e8f977;
+}
+#serviceAlert .orbit-b {
+  transform:scaleY(.68) rotate(-35deg);
+  border-color:#c084fc88;
+  animation-direction:reverse;
+  animation-duration:13s;
+}
+
+#serviceAlert .spark {
+  position:absolute;
+  color:#c4b5fd;
+  font-size:18px;
+  text-shadow:0 0 12px currentColor;
+  animation:sparkle 2.5s ease-in-out infinite;
+}
+#serviceAlert .spark-a {top:1px;right:4px}
+#serviceAlert .spark-b {bottom:3px;left:3px;animation-delay:-1.2s}
+
+#serviceAlert .eyebrow {
+  color:#a5b4fc;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:2.5px;
+  margin-bottom:12px;
+}
+
+#serviceAlert .premium-card h1 {
+  margin:0;
+  font-size:clamp(22px,4vw,29px);
+  line-height:1.55;
+  font-weight:850;
+  letter-spacing:-.5px;
+  color:#fff;
+  text-shadow:0 0 28px rgba(129,140,248,.2);
+}
+
+#serviceAlert .title-line {
+  width:72px;height:3px;
+  margin:17px auto 20px;
+  border-radius:9px;
+  background:linear-gradient(90deg,#22d3ee,#a78bfa,#f0abfc);
+  box-shadow:0 0 15px #818cf866;
+}
+
+#serviceAlert .alert-message {
+  margin:0;
+  color:#dbeafe;
+  font-size:14px;
+  line-height:2;
+}
+
+#serviceAlert .alert-message strong {
+  color:#67e8f9;
+  font-weight:800;
+}
+
+#serviceAlert .notice-panel {
+  display:flex;
+  align-items:center;
+  gap:11px;
+  margin-top:21px;
+  padding:13px 14px;
+  text-align:left;
+  border:1px solid rgba(148,163,184,.16);
+  border-radius:14px;
+  background:rgba(15,23,42,.48);
+  color:#cbd5e1;
+  font-size:12px;
+  line-height:1.8;
+}
+
+#serviceAlert .notice-icon {
+  display:grid;
+  place-items:center;
+  flex-shrink:0;
+  width:29px;height:29px;
+  border-radius:10px;
+  background:#818cf822;
+  color:#a5b4fc;
+  font-size:18px;
+}
+
+#serviceAlert .premium-close {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  width:100%;
+  min-height:52px;
+  margin-top:20px;
+  padding:13px 17px;
+  border:1px solid rgba(255,255,255,.26);
+  border-radius:14px;
+  color:white;
   background:linear-gradient(100deg,#2563eb,#7c3aed,#0891b2,#2563eb);
-  background-size:250% 100%; animation:gradientMove 5s linear infinite;
+  background-size:300% 100%;
+  box-shadow:0 9px 30px rgba(79,70,229,.28);
+  font-size:14px;
+  font-weight:800;
+  cursor:pointer;
+  transition:transform .25s,box-shadow .25s;
+  animation:buttonShimmer 7s linear infinite;
 }
-.alert-close:hover {filter:brightness(1.15);transform:translateY(-1px)}
-@keyframes gradientMove {to{background-position:300% 50%}}
-@keyframes fadeAlert {from{opacity:0}to{opacity:1}}
-@keyframes popAlert {from{opacity:0;transform:translateY(15px) scale(.95)}to{opacity:1;transform:none}}
-@keyframes iconFloat {50%{transform:translateY(-5px)}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important}}
+
+#serviceAlert .premium-close:hover {
+  transform:translateY(-2px);
+  box-shadow:0 13px 35px rgba(56,189,248,.28);
+}
+
+#serviceAlert .premium-close:focus-visible {
+  outline:2px solid #67e8f9;
+  outline-offset:4px;
+}
+
+#serviceAlert .close-arrow {
+  font-size:18px;
+  transition:transform .25s;
+}
+#serviceAlert .premium-close:hover .close-arrow {
+  transform:translate(3px,-2px);
+}
+
+#serviceAlert .brand-signature {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin-top:22px;
+  color:#a5b4fc;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+
+#serviceAlert .brand-line {
+  width:24px;height:1px;
+  background:linear-gradient(90deg,transparent,#818cf8);
+}
+#serviceAlert .brand-line:last-child {
+  transform:rotate(180deg);
+}
+
+#serviceAlert .screen-footer {
+  position:absolute;
+  bottom:17px;
+  left:10px;right:10px;
+  color:#cbd5e177;
+  text-align:center;
+  font-size:9px;
+  letter-spacing:2px;
+}
+#serviceAlert .screen-footer span {color:#67e8f9}
+
+@keyframes screenGradient {
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+@keyframes auroraMove {
+  from{transform:translate(-4%,-3%) scale(.9)}
+  to{transform:translate(9%,7%) scale(1.18)}
+}
+@keyframes cardEntrance {
+  from{opacity:0;transform:translateY(28px) scale(.94);filter:blur(8px)}
+  to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+}
+@keyframes orbitSpin {to{transform:rotate(360deg) scaleY(.48)}}
+@keyframes warningFloat {50%{transform:translateY(-4px);box-shadow:0 0 45px #f59e0b30}}
+@keyframes sparkle {0%,100%{opacity:.45;transform:scale(.8)}50%{opacity:1;transform:scale(1.25)}}
+@keyframes dotPulse {50%{opacity:.4;box-shadow:0 0 3px #22d3ee}}
+@keyframes lineGlow {to{background-position:200% 0}}
+@keyframes buttonShimmer {to{background-position:300% 0}}
+
+@media(max-width:480px) {
+  #serviceAlert.premium-alert {padding:15px 13px 48px}
+  #serviceAlert .premium-card {padding:28px 20px 22px;border-radius:25px}
+  #serviceAlert .warning-orbit {margin-top:21px}
+  #serviceAlert .alert-message {font-size:13px}
+  #serviceAlert .notice-panel {font-size:11px}
+}
+
+@media(max-height:700px) {
+  #serviceAlert .premium-card {padding-top:20px;padding-bottom:17px}
+  #serviceAlert .warning-orbit {width:80px;height:80px;margin:14px auto}
+  #serviceAlert .warning-symbol {width:55px;height:55px;border-radius:18px;font-size:34px}
+  #serviceAlert .brand-signature {margin-top:15px}
+}
+
+@media(prefers-reduced-motion:reduce) {
+  #serviceAlert, #serviceAlert *, #serviceAlert *::before,
+  #serviceAlert *::after {animation:none!important;scroll-behavior:auto!important}
+}
 </style>
 
 <script>
 (function(){
-  const modal=document.getElementById('serviceAlert');
-  const download=document.getElementById('downloadBtn');
-  const close=document.getElementById('closeServiceAlert');
-  const x=document.getElementById('closeServiceAlertX');
+  const modal = document.getElementById('serviceAlert');
+  const canvas = document.getElementById('alertParticles');
+  const close = document.getElementById('closeServiceAlert');
+  const download = document.getElementById('downloadBtn');
 
-  if(!modal || !download || !close) return;
+  if (!modal || !canvas || !close) return;
 
-  download.addEventListener('click',function(e){
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    modal.classList.add('show');
-  },true);
+  let particles = [];
+  let frame = 0;
+  let ctx = canvas.getContext('2d');
+  const reducedMotion = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function hide(){modal.classList.remove('show')}
-  close.addEventListener('click',hide);
-  if(x)x.addEventListener('click',hide);
+  function resizeCanvas(){
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(window.innerWidth * dpr);
+    canvas.height = Math.round(window.innerHeight * dpr);
+    canvas.style.width = window.innerWidth + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const count = Math.min(100, Math.max(35, Math.floor(window.innerWidth / 13)));
+    particles = Array.from({length:count}, () => ({
+      x:Math.random()*window.innerWidth,
+      y:Math.random()*window.innerHeight,
+      r:Math.random()*2+0.5,
+      vx:(Math.random()-.5)*0.45,
+      vy:-Math.random()*0.45-0.08,
+      hue:Math.random()*100+175,
+      alpha:Math.random()*.6+.2
+    }));
+  }
+
+  function drawParticles(){
+    if (!modal.classList.contains('is-open')) return;
+    ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.y < -10) {
+        p.y = window.innerHeight + 10;
+        p.x = Math.random()*window.innerWidth;
+      }
+      if (p.x < -10) p.x = window.innerWidth+10;
+      if (p.x > window.innerWidth+10) p.x = -10;
+
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle = 'hsla('+p.hue+',95%,75%,'+p.alpha+')';
+      ctx.shadowBlur = 12;
+      ctx.shadowColor = 'hsla('+p.hue+',95%,70%,.65)';
+      ctx.fill();
+    });
+    ctx.shadowBlur = 0;
+
+    for(let i=0;i<particles.length;i++){
+      for(let j=i+1;j<particles.length;j++){
+        const a=particles[i],b=particles[j];
+        const dx=a.x-b.x,dy=a.y-b.y;
+        const distance=Math.sqrt(dx*dx+dy*dy);
+        if(distance<105){
+          ctx.beginPath();
+          ctx.moveTo(a.x,a.y);
+          ctx.lineTo(b.x,b.y);
+          ctx.strokeStyle='rgba(125,211,252,'+(0.12*(1-distance/105))+')';
+          ctx.lineWidth=.6;
+          ctx.stroke();
+        }
+      }
+    }
+    frame=requestAnimationFrame(drawParticles);
+  }
+
+  function openAlert(){
+    modal.hidden = false;
+    modal.classList.add('is-open');
+    if(!reducedMotion){
+      cancelAnimationFrame(frame);
+      resizeCanvas();
+      drawParticles();
+    }
+    close.focus();
+  }
+
+  function closeAlert(){
+    modal.classList.remove('is-open');
+    modal.hidden = true;
+    cancelAnimationFrame(frame);
+    if(download) download.focus();
+  }
+
+  close.addEventListener('click',closeAlert);
+  if(download){
+    download.addEventListener('click',function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      openAlert();
+    },true);
+  }
+
   modal.addEventListener('click',function(e){
-    if(e.target===modal)hide();
+    if(e.target===modal) closeAlert();
   });
+
   document.addEventListener('keydown',function(e){
-    if(e.key==='Escape')hide();
+    if(e.key==='Escape' && !modal.hidden) closeAlert();
   });
+
+  window.addEventListener('resize',function(){
+    if(!modal.hidden && !reducedMotion) resizeCanvas();
+  });
+
+  // Page खुल्नेबित्तिकै Alert देखाउने
+  openAlert();
 })();
 </script>
