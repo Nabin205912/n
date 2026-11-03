@@ -136,6 +136,40 @@
 <section class="section" id="track"><div class="wide"><div class="trackbox" style="background:#062d58;color:#fff;border-radius:22px;padding:28px"><div class="eyebrow">Order Tracking</div><h2>Track Your Printing Order</h2><p>Enter the Order ID received after submission.</p><form id="trackForm" class="trackform"><input name="orderId" placeholder="SPP-YYYYMMDD-ABCDE" required><button class="orderbtn" type="submit">Track Order</button></form><div id="trackResult"></div></div></div></section>
 </main>
 
+
+<!-- Sathi Printing Press: Google Maps Location -->
+<section class="section shop-location" id="location">
+  <div class="wide">
+    <div class="sectionhead">
+      <div>
+        <h2>हाम्रो पसलको Location</h2>
+        <p>साथी छापाखाना तथा कापि उद्योग, बसपार्क निकास द्वार, धनगढी, कैलाली</p>
+      </div>
+      <a class="viewall" href="https://www.google.com/maps/dir/?api=1&destination=28.7055002,80.5740691" target="_blank" rel="noopener noreferrer">Get Directions ↗</a>
+    </div>
+    <div class="location-map-wrap">
+      <iframe
+        title="Sathi Printing Press Google Maps Location"
+        src="https://www.google.com/maps?q=28.7055002,80.5740691&z=17&output=embed"
+        width="100%" height="420" style="border:0" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="location-actions">
+      <a class="orderbtn" href="https://www.google.com/maps/dir/?api=1&destination=28.7055002,80.5740691" target="_blank" rel="noopener noreferrer">📍 पसलसम्म बाटो हेर्नुहोस् (Get Directions)</a>
+      <a class="location-link" href="https://maps.app.goo.gl/hZhLdo4kwAmFiPQ5A" target="_blank" rel="noopener noreferrer">Google Maps मा Location खोल्नुहोस्</a>
+    </div>
+  </div>
+</section>
+<style>
+.shop-location .location-map-wrap{overflow:hidden;border-radius:20px;border:1px solid #d9e3ef;box-shadow:0 12px 35px rgba(6,55,109,.12)}
+.shop-location .location-map-wrap iframe{display:block}
+.shop-location .location-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:18px}
+.shop-location .location-link{font-weight:700;color:#1261cf;text-decoration:none;padding:12px 16px}
+@media(max-width:600px){.shop-location .location-map-wrap iframe{height:320px}.shop-location .location-actions{flex-direction:column;align-items:stretch}.shop-location .location-link{text-align:center}}
+</style>
+
 <footer id="contact"><div class="wide foot">
   <div><img src="public/uploads/branding/sathi-logo.jpg" alt="Sathi Printing Press logo" loading="lazy"><p>Print with Trust...</p></div>
   <div><b>Sathi Printing Press</b><span>Dhangadhi, Buspark, Kailali</span><a href="mailto:sathi.printingpress@gmail.com">sathi.printingpress@gmail.com</a><a href="tel:+9779865858412">+977-9865858412</a></div>
